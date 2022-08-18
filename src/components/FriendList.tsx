@@ -11,6 +11,7 @@ interface SearchResultsProps {
         id: number;
         name: string;
         likes: number;
+        online: string;
     }[];
     follow: () => void;
 }
@@ -29,10 +30,10 @@ export function FriendList({ data, follow }: SearchResultsProps) {
             </Text>
 
             {
-                data.map((friend) => (
+                data.map((item, index) => (
                     <Friend
-                        key={String(friend.id)}
-                        data={friend}
+                        key={String(index)}
+                        data={item}
                         follow={follow}
                     />
                 ))

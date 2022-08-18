@@ -5,7 +5,6 @@ import {
     TextInput,
     StyleSheet,
     Button,
-    ScrollView,
 } from 'react-native';
 
 import { FriendList } from '../components/FriendList';
@@ -55,9 +54,7 @@ export function Home() {
                 onPress={handleSearch}
             />
 
-            <ScrollView style={styles.list}>
-                <FriendList data={friends} follow={handleFollow} />
-            </ScrollView>
+            <FriendList data={friends} follow={handleFollow} />
         </View>
     );
 }
@@ -77,7 +74,4 @@ const styles = StyleSheet.create({
         padding: 7,
         marginVertical: 10,
     },
-    list: {
-        marginTop: 20,
-    }
 });

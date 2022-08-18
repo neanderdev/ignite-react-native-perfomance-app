@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import {
     View,
     Text,
+    FlatList,
 } from 'react-native';
 
 import { Friend } from './Friend';
@@ -29,15 +30,16 @@ export function FriendList({ data, follow }: SearchResultsProps) {
                 Total de likes: {totalLikes}
             </Text>
 
-            {
-                data.map((item, index) => (
+            <FlatList
+                data={data}
+                keyExtractor={item => String(item.id)}
+                renderItem={({ item }) => (
                     <Friend
-                        key={String(index)}
                         data={item}
                         follow={follow}
                     />
-                ))
-            }
+                )}
+            />
         </View>
     );
 }

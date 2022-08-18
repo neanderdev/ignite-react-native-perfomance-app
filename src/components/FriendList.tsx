@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import {
     View,
-    Text
+    Text,
 } from 'react-native';
 
 import { Friend } from './Friend';
@@ -12,9 +12,10 @@ interface SearchResultsProps {
         name: string;
         likes: number;
     }[];
+    follow: () => void;
 }
 
-export function FriendList({ data }: SearchResultsProps) {
+export function FriendList({ data, follow }: SearchResultsProps) {
     const totalLikes = useMemo(() => {
         return data.reduce((likes, friend) => {
             return likes + friend.likes;
@@ -32,6 +33,7 @@ export function FriendList({ data }: SearchResultsProps) {
                     <Friend
                         key={String(friend.id)}
                         data={friend}
+                        follow={follow}
                     />
                 ))
             }
